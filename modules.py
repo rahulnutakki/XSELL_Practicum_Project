@@ -1,4 +1,5 @@
-import pandas as pd 
+import pandas as pd
+import glob
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from textblob import Word
@@ -96,9 +97,8 @@ def getWordVectors(model, sentences):
 
 
 
-# Loading data from file pre3.csv
-fileName = input('Enter the filename along with full path (if code path is different to file path else only file name):')
-data = pd.read_csv(fileName,index_col=0)
+# Loading data from multiple files 
+data = pd.concat([pd.read_csv(f) for f in glob.glob('*.csv')], ignore_index = True)
 
 # Adding column 'sentence' to that dataframe which shows the sentence ID against each row
 data = addSentenceID(data)
