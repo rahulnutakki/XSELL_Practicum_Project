@@ -7,7 +7,6 @@ Created on Fri Apr 26 19:38:45 2019
 #This code lets us design a network for the classification of chat data.
 #For this model to work we need the data to be divided into Train, Test and Validation Datasets.
 #It will give us the best hyperparameters that can be used by trail and error.
-#It also gives us plots at every step which can be removed or commented, but can be later used for our report.
 
 
 import numpy as np
@@ -20,6 +19,9 @@ import keras
 import tensorflow as tf
 import pandas as pd
 import time
+
+#Define Number of Classes
+num_classes = 8
 
 #Setting Random seed
 from numpy.random import seed
@@ -321,4 +323,5 @@ test_output = model.evaluate(x_test, y_test)
 print("Test Loss: %f, Test Acc: %f" % (test_output[0], test_output[1]))
 print_classification_graphs(history=history, epochs = epochs, batch_size = batch_size, 
                  plot_title = "Batch Normalization")
+
 
